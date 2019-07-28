@@ -18,6 +18,8 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'devise'
+gem 'telegram-bot'
+gem 'rufus-scheduler'
 
 group :development, :test do
   gem 'pry'

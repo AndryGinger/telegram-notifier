@@ -1,24 +1,7 @@
 # README
+## Bot Setup To Send Messages
+Each bot is given a unique authentication token when it is created. The token looks something like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`. You can learn about obtaining tokens and generating new ones in [this document](https://core.telegram.org/bots#botfather).
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Setup By Chat Type
+* Channel - bot should be added as ADMIN only.
+* Group - bot may be as a member and as a admin as well
