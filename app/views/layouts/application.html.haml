@@ -1,5 +1,5 @@
 !!!
-%html
+%html.h-100
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title TelegramNotifier
@@ -7,5 +7,7 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
+  %body.h-100
+    = render "layouts/flash"
+    -# .container.h-100
     = yield
