@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'telegram-bot'
 gem 'rufus-scheduler'
+gem 'figaro'
 
 group :development, :test do
   gem 'pry'
