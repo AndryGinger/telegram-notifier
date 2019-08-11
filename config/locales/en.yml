@@ -1,2 +1,14 @@
 en:
-  hello: "Hello world"
+  nav:
+    back: Back
+  telegram_messages:
+    chat_id: Chat ID
+    send_at: Send At
+    sent_at: Sent At
+    body: Body
+    new: New Telegram Message
+    create: Create Telegram Message
+    show: Show
+    list_is_empty: No Telegram Messages
+  flash:
+    create_success: Telegram Message successfully created!

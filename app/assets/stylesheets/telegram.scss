@@ -2,3 +2,21 @@
   background-image: url("telegram_logo.png");
   background-size: 60px;
 }
+
+.list {
+  margin-top: 50px;
+
+  th:last-child, td:last-child {
+    width: 100px;
+  }
+
+  td {
+    line-height: 38px;
+  }
+}
+
+.preview {
+  border-radius: 25px;
+  border: 1px solid black;
+  padding: 10px 20px;
+}
