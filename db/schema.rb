@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_07_28_120651) do
   create_table "telegram_messages", force: :cascade do |t|
     t.text "body", null: false
     t.string "chat_id"
+    t.integer "chat_message_id"
     t.datetime "send_at"
     t.datetime "sent_at"
     t.datetime "created_at", null: false
