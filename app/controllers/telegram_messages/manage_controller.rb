@@ -1,7 +1,7 @@
 module TelegramMessages
   class ManageController < ApplicationController
-    before_action :find_telegram_message, only: %i(show)
-    before_action :init_telegram_message
+    before_action :find_telegram_message, only: %i(show edit update)
+    before_action :init_telegram_message, only: %i(new create)
 
     def index
       @telegram_messages = TelegramMessage.all
@@ -18,6 +18,18 @@ module TelegramMessages
       else
         flash[:error] = @telegram_message.errors.full_messages.join(', ')
         render :new
+      end
+    end
+
+    def edit; end
+
+    def update
+      if @telegram_message.update_attributes(telegram_params)
+        flash[:notice] = t('telegram_messages.flash.update_success')
+        redirect_to telegram_messages_manage_index_path
+      else
+        flash[:error] = @telegram_message.errors.full_messages.join(', ')
+        render :edit
       end
     end
 

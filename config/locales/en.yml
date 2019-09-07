@@ -8,7 +8,10 @@ en:
     body: Body
     new: New Telegram Message
     create: Create Telegram Message
+    update: Update
     show: Show
+    edit: Edit
     list_is_empty: No Telegram Messages
   flash:
     create_success: Telegram Message successfully created!
+    update_success: Telegram Message successfully updated!

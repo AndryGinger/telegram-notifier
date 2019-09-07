@@ -4,7 +4,8 @@
       %th= '#'
       %th= t('telegram_messages.chat_id')
       %th= t('telegram_messages.send_at')
-      %th{ colspan: 2 }= t('telegram_messages.sent_at')
+      %th= t('telegram_messages.sent_at')
+      %th
     %tbody.bg-white
       - @telegram_messages.each_with_index do |telegram_message, index|
         %tr
@@ -12,8 +13,12 @@
           %td= telegram_message.chat_id
           %td= telegram_message.send_at
           %td= telegram_message.sent_at
-          %td= link_to t('telegram_messages.show'), telegram_messages_manage_path(telegram_message.id),
-                                                    class: 'btn btn-primary'
+          %td
+            - if telegram_message.sent_at.nil?
+              = link_to t('telegram_messages.edit'), edit_telegram_messages_manage_path(telegram_message.id),
+                                                        class: 'btn btn-warning d-inline-block'
+            = link_to t('telegram_messages.show'), telegram_messages_manage_path(telegram_message.id),
+                                                      class: 'btn btn-primary d-inline-block'
 - else
   = t('telegram_messages.list_is_empty')
 
