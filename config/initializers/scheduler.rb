@@ -1,7 +1,7 @@
 require "#{Rails.root}/lib/telegram/ruby_bot.rb"
 
 SCHEDULER = Rufus::Scheduler.singleton
-BOT = Telegram::RubyBot.new("TOKEN")
+BOT = Telegram::RubyBot.new(ENV['bot_token_id'])
 
 return if defined?(Rails::Console) || Rails.env.test? || File.split($0).last == 'rake' || ENV["SKIP_SCHEDULER"]
 
