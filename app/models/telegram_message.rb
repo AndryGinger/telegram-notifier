@@ -1,5 +1,5 @@
 class TelegramMessage < ApplicationRecord
-  validates :body, :chat_id, presence: true
+  validates :body, presence: true
 
-  scope :ready_to_send, -> { where("send_at <= :time_current AND sent_at IS NULL", time_current: Time.current) }
+  scope :ready_to_send, -> { where("send_at <= (?) AND sent_at IS NULL AND chat_id IS NOT NULL", Time.current) }
 end
