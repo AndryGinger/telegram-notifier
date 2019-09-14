@@ -9,7 +9,15 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body.h-100.telegram-background
     = render "layouts/flash"
+
     - if current_admin
+      %nav.navbar.navbar-dark.bg-dark.fixed-top
+        %ul.nav.nav-pills.nav-fill
+          %li.nav-item
+            = link_to 'Telegram Messages', root_path, class: "nav-link #{'active' if current_page?('/')}"
+          %li.nav-item
+            %a.nav-link{:href => "#"} Link
+
       .container.h-100
         = yield
     - else
