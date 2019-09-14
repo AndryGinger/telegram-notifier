@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   namespace :telegram_messages do
     resources :manage
   end
+
+  resource :telegram_web_hook, only: [] do
+    post :get_updates, as: :collection
+  end
 end

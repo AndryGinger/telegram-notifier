@@ -6,7 +6,7 @@ BOT = Telegram::RubyBot.new(ENV['bot_token_id'])
 return if defined?(Rails::Console) || Rails.env.test? || File.split($0).last == 'rake' || ENV["SKIP_SCHEDULER"]
 
 SCHEDULER.every '30m' do |job|
-  BOT.get_updates
+  # BOT.get_updates
 
   TelegramMessage.ready_to_send.each do |telegram_message|
     BOT.send_message(telegram_message)
