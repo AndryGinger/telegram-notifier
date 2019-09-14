@@ -8,3 +8,7 @@
         = f.input :body
       .form-actions
         = f.button :submit, t('telegram_messages.update'), class: 'btn btn-primary'
+
+    .row.mt-5
+      .col-lg-6
+        = link_to t('nav.back'), telegram_messages_manage_index_path, class: "btn btn-dark"

@@ -10,8 +10,8 @@
       - @telegram_messages.each_with_index do |telegram_message, index|
         %tr
           %td= index + 1
-          %td= telegram_message.chat_id
-          %td= telegram_message.send_at
+          %td= telegram_message.chat_id || t('telegram_messages.unknown')
+          %td= telegram_message.send_at || t('telegram_messages.unknown')
           %td= telegram_message.sent_at
           %td
             - if telegram_message.sent_at.nil?
@@ -20,6 +20,8 @@
             = link_to t('telegram_messages.show'), telegram_messages_manage_path(telegram_message.id),
                                                       class: 'btn btn-primary d-inline-block'
 - else
-  = t('telegram_messages.list_is_empty')
+  .row.h-50
+    .col-lg-6.my-auto.mx-auto.bg-white.preview
+      = t('telegram_messages.list_is_empty')
 
 = link_to t('telegram_messages.new'), new_telegram_messages_manage_path, class: 'btn btn-dark'

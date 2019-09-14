@@ -2,6 +2,7 @@ en:
   nav:
     back: Back
   telegram_messages:
+    unknown: Unknown
     chat_id: Chat ID
     send_at: Send At
     sent_at: Sent At
