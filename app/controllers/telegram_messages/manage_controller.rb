@@ -2,6 +2,7 @@ module TelegramMessages
   class ManageController < ApplicationController
     before_action :find_telegram_message, only: %i(show edit update)
     before_action :init_telegram_message, only: %i(new create)
+    before_action :prepare_chats, only: %i(new edit)
 
     def index
       @telegram_messages = TelegramMessage.all
@@ -13,7 +14,7 @@ module TelegramMessages
 
     def create
       if @telegram_message.save
-        flash[:notice] = t('telegram_messages.flash.create_success')
+        flash[:notice] = t('flash.create_success', name: "Telegram Message")
         redirect_to telegram_messages_manage_index_path
       else
         flash[:error] = @telegram_message.errors.full_messages.join(', ')
@@ -25,7 +26,7 @@ module TelegramMessages
 
     def update
       if @telegram_message.update_attributes(telegram_params)
-        flash[:notice] = t('telegram_messages.flash.update_success')
+        flash[:notice] = t('flash.update_success', name: "Telegram Message")
         redirect_to telegram_messages_manage_index_path
       else
         flash[:error] = @telegram_message.errors.full_messages.join(', ')
@@ -41,6 +42,10 @@ module TelegramMessages
 
     def init_telegram_message
       @telegram_message = TelegramMessage.new(telegram_params)
+    end
+
+    def prepare_chats
+      @chats = Chat.all.pluck(:name, :telegram_chat_id)
     end
 
     def telegram_params

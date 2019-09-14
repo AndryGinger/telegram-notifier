@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :manage
   end
 
+  namespace :chats do
+    resources :manage
+  end
+
   resource :telegram_web_hook, only: [] do
     post :get_updates, as: :collection
   end

@@ -2,10 +2,8 @@
   .col-lg-6.my-auto.mx-auto.bg-white.preview
     %h2 Edit Telegram Message
     = simple_form_for @telegram_message, url: telegram_messages_manage_path do |f|
-      .form-inputs
-        = f.input :chat_id, label: t('telegram_messages.chat_id')
-        = f.input :send_at, label: t('telegram_messages.send_at')
-        = f.input :body
+      = render 'form', f: f, chats: @chats
+
       .form-actions
         = f.button :submit, t('telegram_messages.update'), class: 'btn btn-primary'
 

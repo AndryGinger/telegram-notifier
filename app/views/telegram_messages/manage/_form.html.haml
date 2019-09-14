@@ -1,0 +1,4 @@
+.form-inputs
+  = f.input :chat_id, collection: @chats, label: t('telegram_messages.chat_id')
+  = f.input :send_at, label: t('telegram_messages.send_at')
+  = f.input :body

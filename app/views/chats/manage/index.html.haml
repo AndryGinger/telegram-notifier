@@ -1,0 +1,21 @@
+- if @chats.present?
+  %table.table.list
+    %thead.thead-dark
+      %th= '#'
+      %th= t('chats.name')
+      %th= t('chats.telegram_chat_id')
+      %th
+    %tbody.bg-white
+      - @chats.each_with_index do |chat, index|
+        %tr
+          %td= index + 1
+          %td= chat.name
+          %td= chat.telegram_chat_id
+          %td
+            = link_to t('chats.edit'), edit_chats_manage_path(chat.id), class: 'btn btn-warning d-inline-block'
+- else
+  .row.h-50
+    .col-lg-6.my-auto.mx-auto.bg-white.preview.text-center
+      = t('chats.list_is_empty')
+
+= link_to t('chats.new'), new_chats_manage_path, class: 'btn btn-dark'

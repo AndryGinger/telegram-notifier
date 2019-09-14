@@ -16,7 +16,8 @@
           %li.nav-item
             = link_to 'Telegram Messages', root_path, class: "nav-link #{'active' if current_page?('/')}"
           %li.nav-item
-            %a.nav-link{:href => "#"} Link
+            = link_to 'Chats', chats_manage_index_path,
+                                           class: "nav-link #{'active' if current_page?('/chats/manage')}"
 
       .container.h-100
         = yield
