@@ -31,3 +31,6 @@
 
 * Ignore sensitive data
 /config/application.yml
+
+* Ignore uploads
+/public/uploads

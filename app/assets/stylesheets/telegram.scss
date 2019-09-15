@@ -12,6 +12,14 @@
 
   td {
     line-height: 38px;
+
+    .check_block {
+      margin-left: 35px;
+
+      .check-mark {
+        width: 30px;
+      }
+    }
   }
 }
 
@@ -33,4 +41,8 @@
   .nav-link.active:hover {
     background-color: gray;
   }
+}
+
+.attachment {
+  height: 200px;
 }

@@ -6,6 +6,7 @@ en:
     chat_id: Chat ID
     send_at: Send At
     sent_at: Sent At
+    attachment: Attachment
     body: Body
     new: New Telegram Message
     create: Create Telegram Message

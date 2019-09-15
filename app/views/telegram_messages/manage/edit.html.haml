@@ -1,11 +1,8 @@
 .row.h-100
-  .col-lg-6.my-auto.mx-auto.bg-white.preview
+  .col-lg-12.my-auto.mx-auto.bg-white.preview
     %h2 Edit Telegram Message
-    = simple_form_for @telegram_message, url: telegram_messages_manage_path do |f|
-      = render 'form', f: f, chats: @chats
-
-      .form-actions
-        = f.button :submit, t('telegram_messages.update'), class: 'btn btn-primary'
+    = simple_form_for @telegram_message, url: telegram_messages_manage_path, html: { multipart: true } do |f|
+      = render 'form', f: f, chats: @chats, submit_text: t('telegram_messages.update')
 
     .row.mt-5
       .col-lg-6

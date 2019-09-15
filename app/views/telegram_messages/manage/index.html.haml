@@ -5,14 +5,19 @@
       %th= t('telegram_messages.chat_id')
       %th= t('telegram_messages.send_at')
       %th= t('telegram_messages.sent_at')
+      %th= t('telegram_messages.attachment')
       %th
     %tbody.bg-white
       - @telegram_messages.each_with_index do |telegram_message, index|
         %tr
           %td= index + 1
-          %td= telegram_message.chat_id || t('telegram_messages.unknown')
+          %td= telegram_message.chat_id.presence || t('telegram_messages.unknown')
           %td= telegram_message.send_at || t('telegram_messages.unknown')
           %td= telegram_message.sent_at
+          %td
+            - if telegram_message.attachment?
+              .check_block
+                = image_tag 'checked.png', class: 'check-mark'
           %td
             - if telegram_message.sent_at.nil?
               = link_to t('telegram_messages.edit'), edit_telegram_messages_manage_path(telegram_message.id),

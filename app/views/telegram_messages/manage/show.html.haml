@@ -1,17 +1,21 @@
 .row.h-100
   .col-lg-6.my-auto.mx-auto.bg-white.preview
     .row
-      .col-sm-3.font-weight-bold= t('telegram_messages.chat_id') + ":"
+      .col-sm-3.font-weight-bold= t('telegram_messages.chat_id') + ':'
       .col-sm-6= @telegram_message.chat_id || t('telegram_messages.unknown')
     .row
-      .col-sm-3.font-weight-bold= t('telegram_messages.send_at') + ":"
+      .col-sm-3.font-weight-bold= t('telegram_messages.send_at') + ':'
       .col-sm-6= @telegram_message.send_at || t('telegram_messages.unknown')
     .row
-      .col-sm-3.font-weight-bold= t('telegram_messages.sent_at') + ":"
+      .col-sm-3.font-weight-bold= t('telegram_messages.sent_at') + ':'
       .col-sm-6= @telegram_message.sent_at
     .row
-      .col-sm-3.font-weight-bold= t('telegram_messages.body') + ":"
+      .col-sm-3.font-weight-bold= t('telegram_messages.body') + ':'
       .col-sm-9= @telegram_message.body
+    - if @telegram_message.attachment?
+      .row
+        .col-sm-3.font-weight-bold= t('telegram_messages.attachment') + ':'
+        .col-sm-9= image_tag @telegram_message.attachment_url, class: 'attachment'
     .row.mt-5
       .col-lg-6
-        = link_to t('nav.back'), telegram_messages_manage_index_path, class: "btn btn-dark"
+        = link_to t('nav.back'), telegram_messages_manage_index_path, class: 'btn btn-dark'

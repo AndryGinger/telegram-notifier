@@ -49,7 +49,7 @@ module TelegramMessages
     end
 
     def telegram_params
-      params.fetch(:telegram_message, {}).permit(:chat_id, :send_at, :body)
+      params.fetch(:telegram_message, {}).permit(:chat_id, :send_at, :body, :attachment, :remove_attachment)
     end
   end
 end

@@ -1,4 +1,13 @@
 .form-inputs
-  = f.input :chat_id, collection: @chats, label: t('telegram_messages.chat_id')
-  = f.input :send_at, label: t('telegram_messages.send_at')
-  = f.input :body
+  .row
+    .col-lg-6
+      = f.input :chat_id, collection: chats, label: t('telegram_messages.chat_id')
+      = f.input :send_at, label: t('telegram_messages.send_at')
+      = f.input :body
+      = f.button :submit, submit_text, class: 'btn btn-primary mt-4'
+    .col-lg-1
+    .col-lg-5
+      = f.input :attachment
+      - if f.object.attachment?
+        = f.input :remove_attachment, as: :boolean
+        = image_tag f.object.attachment_url, class: 'attachment'

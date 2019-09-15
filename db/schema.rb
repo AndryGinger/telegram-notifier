@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_14_074636) do
+ActiveRecord::Schema.define(version: 2019_09_14_091235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,13 +35,14 @@ ActiveRecord::Schema.define(version: 2019_09_14_074636) do
   end
 
   create_table "telegram_messages", force: :cascade do |t|
-    t.text "body", null: false
+    t.text "body"
     t.string "chat_id"
     t.integer "chat_message_id"
     t.datetime "send_at"
     t.datetime "sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "attachment"
   end
 
 end
