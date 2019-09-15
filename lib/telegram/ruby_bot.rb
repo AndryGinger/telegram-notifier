@@ -22,16 +22,16 @@ module Telegram
       p telegram_params
       message = telegram_params[:message] || telegram_params[:channel_post]
       p message
-      return if TelegramMessage.where(chat_message_id: message[:message_id]).count > 0 || message[:text].nil?
+      return if TelegramMessage.where(chat_message_id: message[:message_id]).count > 0 || message[:text].nil? && message[:photo].nil?
 
       telegram_attributes = { chat_message_id: message[:message_id], body: message[:text] }
-      if message['photo']
-        photo = message['photo'].last
-        telegram_attributes[:remote_attachment_url] = attachment_url(photo['file_id'])
-        telegram_attributes[:body] = photo['caption']
+      if message[:photo]
+        photo = message[:photo].last
+        telegram_attributes[:remote_attachment_url] = attachment_url(photo[:file_id])
+        telegram_attributes[:body] = photo[:caption]
       end
 
-      TelegramMessage.create(telegram_attributes)
+      TelegramMessage.create!(telegram_attributes)
     end
 
     private
