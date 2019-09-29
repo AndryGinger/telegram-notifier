@@ -17,8 +17,7 @@ en:
   chats:
     name: Name
     telegram_chat_id: Telegram Chat ID
-    new: New Chat
-    create: Create Chat
+    populate: Populate Chats
     update: Update
     edit: Edit
     list_is_empty: No Chats

@@ -18,4 +18,4 @@
     .col-lg-6.my-auto.mx-auto.bg-white.preview.text-center
       = t('chats.list_is_empty')
 
-= link_to t('chats.new'), new_chats_manage_path, class: 'btn btn-dark'
+= link_to t('chats.populate'), populate_chats_manage_index_path, method: :post, class: 'btn btn-dark'

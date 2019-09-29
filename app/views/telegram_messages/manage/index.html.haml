@@ -19,11 +19,11 @@
               .check_block
                 = image_tag 'checked.png', class: 'check-mark'
           %td
+            = link_to t('telegram_messages.show'), telegram_messages_manage_path(telegram_message.id),
+                                                      class: 'btn btn-primary d-inline-block'
             - if telegram_message.sent_at.nil?
               = link_to t('telegram_messages.edit'), edit_telegram_messages_manage_path(telegram_message.id),
                                                         class: 'btn btn-warning d-inline-block'
-            = link_to t('telegram_messages.show'), telegram_messages_manage_path(telegram_message.id),
-                                                      class: 'btn btn-primary d-inline-block'
 - else
   .row.h-50
     .col-lg-6.my-auto.mx-auto.bg-white.preview.text-center
