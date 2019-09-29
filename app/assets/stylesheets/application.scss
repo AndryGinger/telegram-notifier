@@ -17,3 +17,23 @@
 @import "bootstrap";
 @import "devise";
 @import "telegram";
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+
+  .container { margin-top: 100px; }
+}
+
+#sticky-footer {
+  flex-shrink: none !important;
+}
+
+body {
+  background: #007bff;
+  background: linear-gradient(to right, #494a4a, #d9dcde);
+}

@@ -7,19 +7,27 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body.h-100.telegram-background
+  %body.h-100.d-flex.flex-column
     = render "layouts/flash"
 
     - if current_admin
-      %nav.navbar.navbar-dark.bg-dark.fixed-top
-        %ul.nav.nav-pills.nav-fill
-          %li.nav-item
-            = link_to 'Telegram Messages', root_path, class: "nav-link #{'active' if current_page?('/')}"
-          %li.nav-item
-            = link_to 'Chats', chats_manage_index_path,
-                                           class: "nav-link #{'active' if current_page?('/chats/manage')}"
-
-      .container.h-100
-        = yield
+      %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+        .container
+          %a.navbar-brand{:href => "/"} Telegram Notifier
+          %button.navbar-toggler{"aria-controls" => "navbarResponsive", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarResponsive", "data-toggle" => "collapse", :type => "button"}
+            %span.navbar-toggler-icon
+          #navbarResponsive.collapse.navbar-collapse
+            %ul.navbar-nav.ml-auto
+              %li.nav-item
+                = link_to 'Telegram Messages', root_path, class: "nav-link #{'active' if current_page?('/')}"
+              %li.nav-item
+                = link_to 'Chats', chats_manage_index_path, class: "nav-link #{'active' if current_page?('/chats/manage')}"
+      #page-content
+        .container
+          = yield
     - else
       = yield
+
+    %footer#sticky-footer.py-4.bg-dark.text-white-50.mt-5
+      .container.text-center
+        %small Copyright © Your Website

@@ -17,6 +17,8 @@ en:
   chats:
     name: Name
     telegram_chat_id: Telegram Chat ID
+    subscribe: Subscribe On Updated
+    subscribed: Subscribed
     populate: Populate Chats
     update: Update
     edit: Edit

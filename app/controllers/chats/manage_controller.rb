@@ -3,7 +3,7 @@ module Chats
     before_action :find_chat, only: %i(edit update)
 
     def index
-      @chats = Chat.all
+      @chats = Chat.all.order(id: :asc)
     end
 
     def populate
@@ -31,7 +31,7 @@ module Chats
     end
 
     def chat_params
-      params.fetch(:chat, {}).permit(:name, :telegram_chat_id)
+      params.fetch(:chat, {}).permit(:name, :telegram_chat_id, :subscribed)
     end
   end
 end
