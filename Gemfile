@@ -23,6 +23,7 @@ gem 'rufus-scheduler'
 gem 'figaro'
 gem 'carrierwave', '~> 2.0'
 gem 'httpi', '~> 2.1.0'
+gem 'tdlib-ruby'
 
 group :development, :test do
   gem 'pry'
