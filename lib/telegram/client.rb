@@ -11,6 +11,13 @@ module Telegram
       message.update_attributes(sent_at: Time.current) if response.result.first
     end
 
+    def create_telegram_message(message)
+      chat = Chat.find_by(telegram_chat_id: message.chat_id)
+      return unless chat&.subscribed?
+
+      TelegramMessage.create!(body: message.content.text.text)
+    end
+
     private
 
     def message_content(content)
