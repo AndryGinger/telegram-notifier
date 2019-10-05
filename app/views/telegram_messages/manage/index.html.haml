@@ -9,7 +9,8 @@
       %th
     %tbody.bg-white
       - @telegram_messages.each_with_index do |telegram_message, index|
-        %tr
+        %tr{ data: { toggle: 'collapse', target: "#collapse-#{telegram_message.id}" },
+             aria: { expanded: 'false', 'aria-controls': "#collapse-#{telegram_message.id}" } }
           %td= index + 1
           %td= telegram_message.chat_id.presence || t('telegram_messages.unknown')
           %td= telegram_message.send_at || t('telegram_messages.unknown')
@@ -24,9 +25,10 @@
             - if telegram_message.sent_at.nil?
               = link_to t('telegram_messages.edit'), edit_telegram_messages_manage_path(telegram_message.id),
                                                         class: 'btn btn-warning d-inline-block'
-        %tr
-          %td{ colspan: 6 }
-            = telegram_message.body
+        %tr.collapse{ id: "collapse-#{telegram_message.id}" }
+          %td.table-secondary{ colspan: 6 }
+            .collapse{ id: "collapse-#{telegram_message.id}" }
+              = telegram_message.body
 
   = paginate @telegram_messages
 - else
