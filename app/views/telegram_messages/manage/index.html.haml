@@ -16,7 +16,7 @@
           %td= telegram_message.send_at || t('telegram_messages.unknown')
           %td= telegram_message.sent_at
           %td
-            - if telegram_message.attachment?
+            - if telegram_message.attachment
               .check_block
                 = image_tag 'checked.png', class: 'check-mark'
           %td

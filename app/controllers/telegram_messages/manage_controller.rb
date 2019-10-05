@@ -42,6 +42,7 @@ module TelegramMessages
 
     def init_telegram_message
       @telegram_message = TelegramMessage.new(telegram_params)
+      @telegram_message.attachment = Attachment.new unless @telegram_message.attachment
     end
 
     def prepare_chats
@@ -49,7 +50,10 @@ module TelegramMessages
     end
 
     def telegram_params
-      params.fetch(:telegram_message, {}).permit(:chat_id, :send_at, :body, :attachment, :remove_attachment)
+      params.fetch(:telegram_message, {}).permit(
+        :chat_id, :send_at, :body,
+        attachment_attributes: [:attachment, :id, :_destroy, :remove_attachment]
+      )
     end
   end
 end
