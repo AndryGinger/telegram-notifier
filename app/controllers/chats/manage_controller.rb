@@ -3,7 +3,7 @@ module Chats
     before_action :find_chat, only: %i(edit update)
 
     def index
-      @chats = Chat.all.order(id: :asc).page(params[:page])
+      @chats = Chat.all.order(subscribed: :desc, id: :asc).page(params[:page])
     end
 
     def populate
