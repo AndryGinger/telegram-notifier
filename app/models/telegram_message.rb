@@ -7,6 +7,7 @@ class TelegramMessage < ApplicationRecord
   delegate :attachment_url, to: :attachment
 
   scope :ready_to_send, -> {
-    where("send_at <= (?) AND sent_at IS NULL AND chat_id IS NOT NULL AND
-          (body IS NOT NULL OR attachment IS NOT NULL)", Time.current) }
+    joins("LEFT JOIN attachments ON telegram_messages.id = attachments.telegram_message_id")
+    .where("send_at <= (?) AND sent_at IS NULL AND chat_id IS NOT NULL AND " \
+           "(body IS NOT NULL OR attachments.id IS NOT NULL)", Time.current) }
 end
