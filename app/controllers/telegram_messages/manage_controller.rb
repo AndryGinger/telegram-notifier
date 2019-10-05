@@ -5,7 +5,7 @@ module TelegramMessages
     before_action :prepare_chats, only: %i(new edit)
 
     def index
-      @telegram_messages = TelegramMessage.all
+      @telegram_messages = TelegramMessage.all.page(params[:page])
     end
 
     def show; end
