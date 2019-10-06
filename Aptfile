@@ -1,0 +1,4 @@
+cmake
+gperf
+zlib
+openssl
