@@ -25,6 +25,9 @@
             - if telegram_message.sent_at.nil?
               = link_to t('telegram_messages.edit'), edit_telegram_messages_manage_path(telegram_message.id),
                                                         class: 'btn btn-warning d-inline-block'
+              = link_to t('telegram_messages.destroy'), telegram_messages_manage_path(telegram_message.id),
+                                                        method: :delete,
+                                                        class: 'btn btn-danger d-inline-block'
         %tr.collapse{ id: "collapse-#{telegram_message.id}" }
           %td.table-secondary{ colspan: 6 }
             .collapse{ id: "collapse-#{telegram_message.id}" }
