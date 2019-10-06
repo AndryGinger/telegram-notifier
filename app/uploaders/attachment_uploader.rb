@@ -14,7 +14,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def is_image?
+  def is_image?(file = nil)
     MIME::Types.type_for(path).first.try(:media_type) == "image"
   end
 
@@ -38,7 +38,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [100, 100]
   # end
 
-  version :thumb do
+  version :thumb, if: :is_image? do
     process resize_to_fill: [90,90]
   end
 
@@ -57,7 +57,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   private
 
   def store_dimensions
-    if file && model
+    if file && model && is_image?
       model.width, model.height = ::MiniMagick::Image.open(file.file)[:dimensions]
     end
   end

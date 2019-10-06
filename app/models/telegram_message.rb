@@ -1,7 +1,7 @@
 class TelegramMessage < ApplicationRecord
   paginates_per 10
 
-  has_one :attachment, inverse_of: :telegram_message
+  has_one :attachment, inverse_of: :telegram_message, dependent: :destroy
   accepts_nested_attributes_for :attachment, allow_destroy: true
 
   delegate :attachment_url, to: :attachment
