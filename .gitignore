@@ -34,6 +34,3 @@
 
 * Ignore uploads
 /public/uploads
-
-* Ignore tdlib build
-/td/build
