@@ -1,1 +1,1 @@
-Figaro.require_keys("bot_token_id")
+Figaro.require_keys("API_ENCRYPTION_KEY")
