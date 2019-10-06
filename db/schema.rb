@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_14_091235) do
+ActiveRecord::Schema.define(version: 2019_10_06_085444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2019_09_14_091235) do
     t.string "name"
     t.string "telegram_chat_id"
     t.boolean "subscribed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "telegram_auths", force: :cascade do |t|
+    t.string "encrypted_api_id"
+    t.string "encrypted_api_id_iv"
+    t.string "encrypted_api_hash"
+    t.string "encrypted_api_hash_iv"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

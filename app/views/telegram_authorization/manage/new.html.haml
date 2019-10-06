@@ -1,0 +1,9 @@
+.row.h-100.mt-100
+  .col-lg-6.my-auto.mx-auto.bg-white.preview
+    %h2 API Authorization
+    = simple_form_for @telegram_auth, url: telegram_authorization_manage_index_path do |f|
+      = f.input :api_id, label: t('telegram_auth.api_id')
+      = f.input :api_hash, label: t('telegram_auth.api_hash')
+
+      .form-actions
+        = f.button :submit, t('telegram_auth.login'), class: 'btn btn-primary'

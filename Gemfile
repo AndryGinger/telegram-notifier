@@ -26,6 +26,7 @@ gem 'httpi', '~> 2.1.0'
 gem 'tdlib-ruby'
 gem 'kaminari'
 gem 'mime-types'
+gem 'attr_encrypted'
 
 group :development, :test do
   gem 'pry'

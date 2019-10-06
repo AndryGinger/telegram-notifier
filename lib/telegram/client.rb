@@ -2,8 +2,22 @@ require 'tdlib-ruby'
 
 module Telegram
   class Client
-    def initialize(client)
-      @client = client
+    def initialize
+      init_td_client
+    end
+
+    def authorize(api_id, api_hash)
+      TD.configure do |config|
+        config.client.api_id = api_id
+        config.client.api_hash = api_hash
+      end
+
+      @client.dispose
+      init_td_client
+    end
+
+    def ready?
+      get_authorization_state.value.class == TD::Types::AuthorizationState::Ready
     end
 
     def send_message(message)
@@ -65,7 +79,7 @@ module Telegram
       if attachment = message.attachment
         local_file = TD::Types::InputFile::Local.new(path: attachment.attachment.path)
 
-        if attachment.photo? || attachment.attachment_type.nil? && attachment.is_image?
+        if attachment.photo? || attachment.attachment_type.nil? && attachment.attachment.is_image?
           thumb = attachment.attachment.thumb
           TD::Types::InputMessageContent::Photo.new(
             photo: local_file,
@@ -90,13 +104,30 @@ module Telegram
       end
     end
 
+    def formatted_text(content)
+      TD::Types::FormattedText.new(text: content, entities: [])
+    end
+
+    def init_td_client
+      @client = TD::Client.new
+
+      setup_handlers
+      @client.connect
+    end
+
+    def setup_handlers
+      @client.on(TD::Types::Update::NewMessage) do |update|
+        TELEGRAM_CLI.create_telegram_message(update.message)
+      end
+
+      @client.on(TD::Types::Update::File) do |update|
+        TELEGRAM_CLI.upload_downloaded_file(update.file)
+      end
+    end
+
     def method_missing(m, *args, &block)
       puts "Delegating #{m} to TD Client"
       @client.send(m, *args, &block)
-    end
-
-    def formatted_text(content)
-      TD::Types::FormattedText.new(text: content, entities: [])
     end
   end
 end

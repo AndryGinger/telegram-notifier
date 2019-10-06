@@ -12,4 +12,8 @@ Rails.application.routes.draw do
       post :populate, on: :collection
     end
   end
+
+  namespace :telegram_authorization do
+    resources :manage
+  end
 end

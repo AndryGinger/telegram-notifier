@@ -1,0 +1,13 @@
+.row.h-100.mt-100
+  .col-lg-6.my-auto.mx-auto.bg-white.preview
+    %h2 API Authorization
+    = simple_form_for @telegram_auth, url: telegram_authorization_manage_path(@telegram_auth) do |f|
+      - if params[:wait_phone_number]
+        = f.input :phone_number
+        = hidden_field_tag :wait_phone_number, true
+      - elsif params[:wait_code]
+        = f.input :code
+        = hidden_field_tag :wait_code, true
+
+      .form-actions
+        = f.button :submit, t('telegram_auth.submit'), class: 'btn btn-primary'

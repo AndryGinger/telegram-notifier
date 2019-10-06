@@ -1,0 +1,7 @@
+.row.h-100.api-ready.mt-100
+  .my-auto.mx-auto
+    .col-lg-12.my-auto.mx-auto.bg-white.preview
+      .text API Ready
+
+    .col-lg-12.mt-5.text-center
+      = link_to t('telegram_auth.api_logout'), telegram_authorization_manage_path(@telegram_auth), method: :delete, class: "btn btn-dark"

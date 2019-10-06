@@ -13,6 +13,7 @@ en:
     update: Update
     show: Show
     edit: Edit
+    destroy: Destroy
     list_is_empty: No Telegram Messages
   chats:
     name: Name
@@ -23,6 +24,14 @@ en:
     update: Update
     edit: Edit
     list_is_empty: No Chats
+  telegram_auth:
+    login: Login
+    submit: Submit
+    api_id: API ID
+    api_hash: API Hash
+    api_logout: API Logout
+    authorization_failed: API ID or API Hash is invalid
   flash:
     create_success: "%{name} successfully created!"
     update_success: "%{name} successfully updated!"
+    destroy_success: "%{name} successfully destroyed!"
