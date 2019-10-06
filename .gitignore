@@ -29,11 +29,13 @@
 # Ignore database settings
 /config/database.yml
 
-* Ignore sensitive data
+# Ignore sensitive data
 /config/application.yml
 
-* Ignore uploads
+# Ignore uploads
 /public/uploads
 
-* Ignore tdlib build
+# Ignore tdlib build
 /td/build
+
+#
