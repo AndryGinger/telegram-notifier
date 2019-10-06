@@ -17,6 +17,7 @@
 @import "bootstrap";
 @import "devise";
 @import "telegram";
+@import "telegram_authorization";
 
 html,
 body {
@@ -25,8 +26,10 @@ body {
 
 #page-content {
   flex: 1 0 auto;
+}
 
-  .container { margin-top: 100px; }
+.mt-100 {
+  margin-top: 100px;
 }
 
 #sticky-footer {
@@ -43,5 +46,5 @@ body {
 }
 
 .flash-messages {
-  top: 56px;
+  z-index: 2000;
 }

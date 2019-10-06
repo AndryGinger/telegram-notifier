@@ -1,42 +1,46 @@
-- if @telegram_messages.present?
-  %table.table.list
-    %thead.thead-dark
-      %th= '#'
-      %th= t('telegram_messages.chat_id')
-      %th= t('telegram_messages.send_at')
-      %th= t('telegram_messages.sent_at')
-      %th= t('telegram_messages.attachment')
-      %th
-    %tbody.bg-white
-      - @telegram_messages.each_with_index do |telegram_message, index|
-        %tr{ data: { toggle: 'collapse', target: "#collapse-#{telegram_message.id}" },
-             aria: { expanded: 'false', 'aria-controls': "#collapse-#{telegram_message.id}" } }
-          %td= index + 1
-          %td= telegram_message.chat_id.presence || t('telegram_messages.unknown')
-          %td= telegram_message.send_at || t('telegram_messages.unknown')
-          %td= telegram_message.sent_at
-          %td
-            - if telegram_message.attachment
-              .check_block
-                = image_tag 'checked.png', class: 'check-mark'
-          %td
-            = link_to t('telegram_messages.show'), telegram_messages_manage_path(telegram_message.id),
-                                                      class: 'btn btn-primary d-inline-block'
-            - if telegram_message.sent_at.nil?
-              = link_to t('telegram_messages.edit'), edit_telegram_messages_manage_path(telegram_message.id),
-                                                        class: 'btn btn-warning d-inline-block'
-              = link_to t('telegram_messages.destroy'), telegram_messages_manage_path(telegram_message.id),
-                                                        method: :delete,
-                                                        class: 'btn btn-danger d-inline-block'
-        %tr.collapse{ id: "collapse-#{telegram_message.id}" }
-          %td.table-secondary{ colspan: 6 }
-            .collapse{ id: "collapse-#{telegram_message.id}" }
-              = telegram_message.body
+#page-content
+  .container.mt-100
+    - if @telegram_messages.present?
+      %table.table.list
+        %thead.thead-dark
+          %th= '#'
+          %th= t('telegram_messages.chat_id')
+          %th= t('telegram_messages.send_at')
+          %th= t('telegram_messages.sent_at')
+          %th= t('telegram_messages.attachment')
+          %th
+        %tbody.bg-white
+          - @telegram_messages.each_with_index do |telegram_message, index|
+            %tr{ data: { toggle: 'collapse', target: "#collapse-#{telegram_message.id}" },
+                 aria: { expanded: 'false', 'aria-controls': "#collapse-#{telegram_message.id}" } }
+              %td= index + 1
+              %td= telegram_message.chat_id.presence || t('telegram_messages.unknown')
+              %td= telegram_message.send_at || t('telegram_messages.unknown')
+              %td= telegram_message.sent_at
+              %td
+                - if telegram_message.attachment
+                  .check_block
+                    = image_tag 'checked.png', class: 'check-mark'
+              %td
+                = link_to t('telegram_messages.show'), telegram_messages_manage_path(telegram_message.id),
+                                                          class: 'btn btn-primary d-inline-block'
+                - if telegram_message.sent_at.nil?
+                  = link_to t('telegram_messages.edit'), edit_telegram_messages_manage_path(telegram_message.id),
+                                                            class: 'btn btn-warning d-inline-block'
+                  = link_to t('telegram_messages.destroy'), telegram_messages_manage_path(telegram_message.id),
+                                                            method: :delete,
+                                                            class: 'btn btn-danger d-inline-block'
+            %tr.collapse{ id: "collapse-#{telegram_message.id}" }
+              %td.table-secondary{ colspan: 6 }
+                .collapse{ id: "collapse-#{telegram_message.id}" }
+                  - if telegram_message.attachment && telegram_message.attachment.attachment.is_image?
+                    = image_tag telegram_message.attachment.attachment.thumb.url
+                  = telegram_message.body
 
-  = paginate @telegram_messages
-- else
-  .row.h-50
-    .col-lg-6.my-auto.mx-auto.bg-white.preview.text-center
-      = t('telegram_messages.list_is_empty')
+      = paginate @telegram_messages
+    - else
+      .row.h-50
+        .col-lg-6.my-auto.mx-auto.bg-white.preview.text-center
+          = t('telegram_messages.list_is_empty')
 
-= link_to t('telegram_messages.new'), new_telegram_messages_manage_path, class: 'btn btn-dark'
+    = link_to t('telegram_messages.new'), new_telegram_messages_manage_path, class: 'btn btn-dark'

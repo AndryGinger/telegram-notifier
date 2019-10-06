@@ -1,28 +1,30 @@
-= link_to t('chats.populate'), populate_chats_manage_index_path, method: :post, class: 'btn btn-dark'
+#page-content
+  .container.mt-100
+    = link_to t('chats.populate'), populate_chats_manage_index_path, method: :post, class: 'btn btn-dark'
 
-- if @chats.present?
-  %table.table.list
-    %thead.thead-dark
-      %th= '#'
-      %th= t('chats.name')
-      %th= t('chats.telegram_chat_id')
-      %th= t('chats.subscribed')
-      %th
-    %tbody.bg-white
-      - @chats.each_with_index do |chat, index|
-        %tr
-          %td= index + 1
-          %td= chat.name
-          %td= chat.telegram_chat_id
-          %td
-            - if chat.subscribed?
-              .check_block
-                = image_tag 'checked.png', class: 'check-mark'
-          %td
-            = link_to t('chats.edit'), edit_chats_manage_path(chat.id), class: 'btn btn-warning d-inline-block'
+    - if @chats.present?
+      %table.table.list
+        %thead.thead-dark
+          %th= '#'
+          %th= t('chats.name')
+          %th= t('chats.telegram_chat_id')
+          %th= t('chats.subscribed')
+          %th
+        %tbody.bg-white
+          - @chats.each_with_index do |chat, index|
+            %tr
+              %td= index + 1
+              %td= chat.name
+              %td= chat.telegram_chat_id
+              %td
+                - if chat.subscribed?
+                  .check_block
+                    = image_tag 'checked.png', class: 'check-mark'
+              %td
+                = link_to t('chats.edit'), edit_chats_manage_path(chat.id), class: 'btn btn-warning d-inline-block'
 
-  = paginate @chats
-- else
-  .row.h-50
-    .col-lg-6.my-auto.mx-auto.bg-white.preview.text-center
-      = t('chats.list_is_empty')
+      = paginate @chats
+    - else
+      .row.h-50
+        .col-lg-6.my-auto.mx-auto.bg-white.preview.text-center
+          = t('chats.list_is_empty')

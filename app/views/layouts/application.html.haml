@@ -19,12 +19,12 @@
           #navbarResponsive.collapse.navbar-collapse
             %ul.navbar-nav.ml-auto
               %li.nav-item
-                = link_to 'Telegram Messages', root_path, class: "nav-link #{'active' if current_page?('/')}"
+                = link_to 'API Authorization', telegram_authorization_manage_index_path, class: "nav-link #{'active' if params[:controller] == 'telegram_authorization/manage'}"
               %li.nav-item
-                = link_to 'Chats', chats_manage_index_path, class: "nav-link #{'active' if current_page?('/chats/manage')}"
-      #page-content
-        .container
-          = yield
+                = link_to 'Telegram Messages', root_path, class: "nav-link #{'active' if params[:controller] == 'telegram_messages/manage'}"
+              %li.nav-item
+                = link_to 'Chats', chats_manage_index_path, class: "nav-link #{'active' if params[:controller] == 'chats/manage'}"
+      = yield
     - else
       = yield
 
