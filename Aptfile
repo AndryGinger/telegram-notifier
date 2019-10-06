@@ -1,0 +1,6 @@
+build-essential
+g++
+gcc-c++
+zlib
+openssl
+gperf
