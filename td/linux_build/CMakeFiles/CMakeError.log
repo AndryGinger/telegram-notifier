@@ -1,0 +1,71 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /td/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ad086/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ad086.dir/build.make CMakeFiles/cmTC_ad086.dir/build
+make[1]: Entering directory '/td/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ad086.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_ad086.dir/CheckSymbolExists.c.o   -c /td/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_ad086
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ad086.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_ad086.dir/CheckSymbolExists.c.o  -o cmTC_ad086 
+CMakeFiles/cmTC_ad086.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_ad086.dir/build.make:97: recipe for target 'cmTC_ad086' failed
+make[1]: *** [cmTC_ad086] Error 1
+make[1]: Leaving directory '/td/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_ad086/fast' failed
+make: *** [cmTC_ad086/fast] Error 2
+
+File /td/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WCXX14_COMPAT_PEDANTIC failed with the following output:
+Change Dir: /td/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_18ac2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_18ac2.dir/build.make CMakeFiles/cmTC_18ac2.dir/build
+make[1]: Entering directory '/td/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_18ac2.dir/src.cxx.o
+/usr/bin/c++    -pthread -std=c++14 -fno-omit-frame-pointer -fno-exceptions -fno-rtti -ffunction-sections -fdata-sections -Wall -Wextra -Wimplicit-fallthrough=2 -Wpointer-arith -Wcast-qual -Wsign-compare -Wduplicated-branches -Wduplicated-cond -Walloc-zero -Wlogical-op -Wno-tautological-compare -Wpointer-arith -Wvla -Wnon-virtual-dtor -Wno-unused-parameter -Wconversion -Wno-sign-conversion -DHAVE_CXX_FLAG_WCXX14_COMPAT_PEDANTIC -Wc++14-compat-pedantic -fPIE   -Wc++14-compat-pedantic -o CMakeFiles/cmTC_18ac2.dir/src.cxx.o -c /td/build/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option '-Wc++14-compat-pedantic'; did you mean '-Wc++14-compat'?
+c++: error: unrecognized command line option '-Wc++14-compat-pedantic'; did you mean '-Wc++14-compat'?
+CMakeFiles/cmTC_18ac2.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_18ac2.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_18ac2.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/td/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_18ac2/fast' failed
+make: *** [cmTC_18ac2/fast] Error 2
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_QUNUSED_ARGUMENTS failed with the following output:
+Change Dir: /td/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_902e1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_902e1.dir/build.make CMakeFiles/cmTC_902e1.dir/build
+make[1]: Entering directory '/td/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_902e1.dir/src.cxx.o
+/usr/bin/c++    -pthread -std=c++14 -fno-omit-frame-pointer -fno-exceptions -fno-rtti -ffunction-sections -fdata-sections -Wall -Wextra -Wimplicit-fallthrough=2 -Wpointer-arith -Wcast-qual -Wsign-compare -Wduplicated-branches -Wduplicated-cond -Walloc-zero -Wlogical-op -Wno-tautological-compare -Wpointer-arith -Wvla -Wnon-virtual-dtor -Wno-unused-parameter -Wconversion -Wno-sign-conversion -Wdeprecated -DHAVE_CXX_FLAG_QUNUSED_ARGUMENTS -Qunused-arguments -fPIE   -Qunused-arguments -o CMakeFiles/cmTC_902e1.dir/src.cxx.o -c /td/build/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option '-Qunused-arguments'; did you mean '-Wunused-parameter'?
+c++: error: unrecognized command line option '-Qunused-arguments'; did you mean '-Wunused-parameter'?
+CMakeFiles/cmTC_902e1.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_902e1.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_902e1.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/td/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_902e1/fast' failed
+make: *** [cmTC_902e1/fast] Error 2
+
+Source file was:
+int main() { return 0; }

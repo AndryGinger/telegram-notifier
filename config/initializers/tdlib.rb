@@ -6,7 +6,7 @@ return if defined?(Rails::Console) || Rails.env.test? || File.split($0).last == 
 SCHEDULER = Rufus::Scheduler.singleton
 
 TD.configure do |config|
-  config.lib_path = Rails.root.to_s + "/td/build"
+  config.lib_path = Rails.root.to_s + "/td/linux_build"
 
   telegram_auth = TelegramAuth.last
   config.client.api_id = telegram_auth&.api_id

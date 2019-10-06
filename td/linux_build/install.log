@@ -1,0 +1,94 @@
+[  1%] Built target tdsqlite
+[  1%] Built target generate_mime_types_gperf
+[  2%] Built target tdmime_auto
+[ 16%] Built target tdutils
+[ 18%] Built target tdactor
+[ 21%] Built target tddb
+[ 24%] Built target tdtl
+[ 27%] Built target generate_common
+[ 28%] Generate common tl source files
+Function initConnection is too hard to store
+Function invokeAfterMsg is too hard to store
+Function invokeAfterMsgs is too hard to store
+Function invokeWithLayer is too hard to store
+Function invokeWithMessagesRange is too hard to store
+Function invokeWithTakeout is too hard to store
+Function invokeWithoutUpdates is too hard to store
+Function initConnection is too hard to store
+Function invokeAfterMsg is too hard to store
+Function invokeAfterMsgs is too hard to store
+Function invokeWithLayer is too hard to store
+Function invokeWithMessagesRange is too hard to store
+Function invokeWithTakeout is too hard to store
+Function invokeWithoutUpdates is too hard to store
+Function initConnection is too hard to store
+Function invokeAfterMsg is too hard to store
+Function invokeAfterMsgs is too hard to store
+Function invokeWithLayer is too hard to store
+Function invokeWithMessagesRange is too hard to store
+Function invokeWithTakeout is too hard to store
+Function invokeWithoutUpdates is too hard to store
+[ 28%] Built target tl_generate_common
+[ 32%] Built target tdnet
+[ 62%] Built target tdcore
+[ 63%] Built target tdclient
+[ 63%] Built target generate_c
+[ 63%] Generate C tl source files
+[ 63%] Built target tl_generate_c
+[ 64%] Built target tdc
+[ 65%] Built target generate_json
+[ 65%] Generate JSON tl source files
+[ 65%] Built target tl_generate_json
+[ 66%] Built target tdjson_private
+[ 67%] Built target tdjson
+[ 67%] Built target memprof
+[ 68%] Generate git_commit.h
+[ 68%] Built target git_commit
+[ 69%] Built target tdjson_static
+[ 70%] Built target tg_cli
+[ 71%] Built target remove_documentation
+[ 71%] Built target td_generate_java_api
+[ 72%] Built target example
+[ 72%] Built target binlog_dump
+[ 80%] Built target all_tests
+[ 90%] Built target run_all_tests
+[ 90%] Built target bench_http_server
+[ 90%] Built target bench_http_server_fast
+[ 91%] Built target bench_http
+[ 92%] Built target bench_crypto
+[ 93%] Built target bench_actor
+[ 94%] Built target bench_empty
+[ 95%] Built target bench_http_reader
+[ 95%] Built target bench_db
+[ 96%] Built target bench_queue
+[ 97%] Built target bench_tddb
+[ 97%] Built target bench_misc
+[ 97%] Built target rmdir
+[ 98%] Built target bench_http_server_cheat
+[ 98%] Built target bench_handshake
+[ 99%] Built target bench_log
+[100%] Built target wget
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /usr/local/lib/libtdjson.so
+-- Installing: /usr/local/lib/libtdjson_static.a
+-- Installing: /usr/local/lib/libtdjson_private.a
+-- Installing: /usr/local/lib/libtdclient.a
+-- Installing: /usr/local/lib/libtdcore.a
+-- Installing: /usr/local/lib/cmake/Td/TdTargets.cmake
+-- Installing: /usr/local/lib/cmake/Td/TdTargets-release.cmake
+-- Installing: /usr/local/include/td/telegram/td_json_client.h
+-- Installing: /usr/local/include/td/telegram/td_log.h
+-- Installing: /usr/local/include/td/telegram/tdjson_export.h
+-- Installing: /usr/local/include/td/telegram/Client.h
+-- Installing: /usr/local/include/td/telegram/Log.h
+-- Installing: /usr/local/include/td/tl/TlObject.h
+-- Installing: /usr/local/include/td/telegram/td_api.h
+-- Installing: /usr/local/include/td/telegram/td_api.hpp
+-- Installing: /usr/local/lib/cmake/Td/TdConfig.cmake
+-- Installing: /usr/local/lib/cmake/Td/TdConfigVersion.cmake
+-- Installing: /usr/local/lib/libtdutils.a
+-- Installing: /usr/local/lib/libtdactor.a
+-- Installing: /usr/local/lib/libtdnet.a
+-- Installing: /usr/local/lib/libtdsqlite.a
+-- Installing: /usr/local/lib/libtddb.a
