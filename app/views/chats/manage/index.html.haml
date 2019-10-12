@@ -20,7 +20,7 @@
                 - if chat.subscribed?
                   .check_block
                     = image_tag 'checked.png', class: 'check-mark'
-              %td
+              %td.text-center
                 = link_to t('chats.edit'), edit_chats_manage_path(chat.id), class: 'btn btn-warning d-inline-block'
 
       = paginate @chats
