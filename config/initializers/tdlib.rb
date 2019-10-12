@@ -20,10 +20,10 @@ TD::Api.set_log_verbosity_level(1)
 
 TELEGRAM_CLI = Telegram::Client.new
 
-# SCHEDULER.every '30s' do |job|
-#   TelegramMessage.ready_to_send.each do |telegram_message|
-#     TELEGRAM_CLI.send_message(telegram_message)
-#   end
-#
-#   job.unschedule unless defined? Rails::Console || defined? Rails::Server
-# end
+SCHEDULER.every "5m" do |job|
+  TelegramMessage.ready_to_send.each do |telegram_message|
+    TELEGRAM_CLI.send_message(telegram_message)
+  end
+
+  job.unschedule unless defined? Rails::Console || defined? Rails::Server
+end
