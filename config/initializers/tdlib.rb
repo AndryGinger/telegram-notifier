@@ -21,7 +21,7 @@ TD::Api.set_log_verbosity_level(1)
 TELEGRAM_CLI = Telegram::Client.new
 
 SCHEDULER.every "5m" do |job|
-  TelegramMessage.ready_to_send.each do |telegram_message|
+  TelegramMessage.ready_to_send.order(created_at: :asc).each do |telegram_message|
     TELEGRAM_CLI.send_message(telegram_message)
   end
 
