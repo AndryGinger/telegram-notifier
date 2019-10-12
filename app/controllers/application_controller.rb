@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :run_wakeup_scheduller
 
   def run_wakeup_scheduller
-    return SCHEDULER.jobs.any? { |j| j.original == "20m" && j.scheduled? }
+    return if SCHEDULER.jobs.any? { |j| j.original == "20m" && j.scheduled? }
 
     SCHEDULER.every "20m" do
       HTTPI.get("https://stark-gorge-40519.herokuapp.com/")
