@@ -16,7 +16,7 @@ TD.configure do |config|
   config.client.use_message_database = false
 end
 
-TD::Api.set_log_verbosity_level(1)
+# TD::Api.set_log_verbosity_level(1)
 
 TELEGRAM_CLI = Telegram::Client.new
 
