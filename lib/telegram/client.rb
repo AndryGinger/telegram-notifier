@@ -33,10 +33,11 @@ module Telegram
 
       content = message.content.attributes
 
-      telegram_attributes = { attachment_attributes: {} }.tap do |attrs|
+      telegram_attributes = {}.tap do |attrs|
         if content[:photo]
           photo = content[:photo].sizes.last
 
+          attrs[:attachment_attributes] = {}
           attrs[:attachment_attributes][:attachment_id] = photo.photo.id
           attrs[:attachment_attributes][:attachment_type] = :photo
           attrs[:body] = content[:caption].text
@@ -45,6 +46,7 @@ module Telegram
         elsif content[:document]
           document = content[:document].document
 
+          attrs[:attachment_attributes] = {}
           attrs[:attachment_attributes][:attachment_id] = document.id
           attrs[:attachment_attributes][:attachment_type] = :document
           attrs[:body] = content[:caption].text
@@ -60,7 +62,11 @@ module Telegram
       telegram_attributes[:chat_id] = "122398979"
       telegram_attributes[:send_at] = Time.current + 5.minutes
       # EDN TEST
-      TelegramMessage.create!(telegram_attributes)
+
+      telegram_message = TelegramMessage.new(telegram_attributes)
+      unless telegram_message.save!
+        p telegram_message.errors.full_messages
+      end
     end
 
     def upload_downloaded_file(file)
