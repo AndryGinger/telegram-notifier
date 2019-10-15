@@ -9,7 +9,7 @@ class ChatPopulator
     private
 
     def chats_to_populate
-      TELEGRAM_CLI.get_chats.value.chat_ids - Chat.pluck(:telegram_chat_id)
+      TELEGRAM_CLI.get_chats.value.chat_ids - Chat.pluck(:telegram_chat_id).map(&:to_i)
     end
 
     def chat_name(chat_id)
