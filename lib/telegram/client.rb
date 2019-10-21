@@ -57,12 +57,6 @@ module Telegram
         end
       end
 
-
-      # BEGIN TEST
-      telegram_attributes[:chat_id] = "122398979"
-      telegram_attributes[:send_at] = Time.current + 5.minutes
-      # EDN TEST
-
       telegram_message = TelegramMessage.new(telegram_attributes)
       unless telegram_message.save!
         p telegram_message.errors.full_messages
