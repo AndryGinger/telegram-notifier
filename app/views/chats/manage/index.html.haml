@@ -1,6 +1,7 @@
 #page-content
   .container.mt-100
-    = link_to t('chats.populate'), populate_chats_manage_index_path, method: :post, class: 'btn btn-dark'
+    - if TELEGRAM_CLI.ready? && TelegramAuth.last&.user_id
+      = link_to t('chats.populate'), populate_chats_manage_index_path, method: :post, class: 'btn btn-dark'
 
     - if @chats.present?
       %table.table.list
