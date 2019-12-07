@@ -5,7 +5,11 @@ module TelegramAuthorization
     before_action :init_telegram_auth, only: %i(new create)
     before_action :manage_authorization_state, except: :destroy
 
-    def index; end
+    def index
+      if TELEGRAM_CLI.ready?
+        TelegramAuth.last.update(user_id: TELEGRAM_CLI.get_me.value.id)
+      end
+    end
 
     def new; end
 
