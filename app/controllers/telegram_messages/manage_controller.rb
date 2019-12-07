@@ -5,12 +5,14 @@ module TelegramMessages
     before_action :prepare_chats, only: %i(new edit)
 
     def index
-      @telegram_messages = TelegramMessage.all.page(params[:page])
+      @telegram_messages = api_user_id ? TelegramMessage.where(user_id: api_user_id).page(params[:page]) : []
     end
 
     def show; end
 
-    def new; end
+    def new
+      @telegram_message.attachment = Attachment.new unless @telegram_message.attachment
+    end
 
     def create
       if @telegram_message.save
@@ -49,7 +51,6 @@ module TelegramMessages
 
     def init_telegram_message
       @telegram_message = TelegramMessage.new(telegram_params)
-      @telegram_message.attachment = Attachment.new unless @telegram_message.attachment
     end
 
     def prepare_chats

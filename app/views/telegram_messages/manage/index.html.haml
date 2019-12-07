@@ -42,5 +42,5 @@
       .row.h-50
         .col-lg-6.my-auto.mx-auto.bg-white.preview.text-center
           = t('telegram_messages.list_is_empty')
-
-    = link_to t('telegram_messages.new'), new_telegram_messages_manage_path, class: 'btn btn-dark'
+    - if TELEGRAM_CLI.ready? && TelegramAuth.last&.user_id
+      = link_to t('telegram_messages.new'), new_telegram_messages_manage_path, class: 'btn btn-dark'

@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
       HTTPI.get("https://stark-gorge-40519.herokuapp.com/")
     end
   end
+
+  private
+
+  def api_user_id
+    @api_user_id ||= TelegramAuth.last&.user_id
+  end
 end

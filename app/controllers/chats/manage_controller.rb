@@ -3,11 +3,11 @@ module Chats
     before_action :find_chat, only: %i(edit update)
 
     def index
-      @chats = Chat.where(user_id: user_id).order(subscribed: :desc, id: :asc).page(params[:page])
+      @chats = api_user_id ? Chat.where(user_id: api_user_id).order(subscribed: :desc, id: :asc).page(params[:page]) : []
     end
 
     def populate
-      ChatPopulator.populate(user_id)
+      ChatPopulator.populate(api_user_id)
 
       redirect_to chats_manage_index_path
     end
@@ -25,10 +25,6 @@ module Chats
     end
 
     private
-
-    def user_id
-      TelegramAuth.last&.user_id
-    end
 
     def find_chat
       @chat = Chat.find(params[:id])
