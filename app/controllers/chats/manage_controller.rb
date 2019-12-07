@@ -1,9 +1,10 @@
 module Chats
   class ManageController < ApplicationController
     before_action :find_chat, only: %i(edit update)
+    before_action :prepare_chats, only: %i(index edit)
 
     def index
-      @chats = api_user_id ? Chat.where(user_id: api_user_id).order(subscribed: :desc, id: :asc).page(params[:page]) : []
+      @chats = @chats.page(params[:page])
     end
 
     def populate
@@ -30,8 +31,12 @@ module Chats
       @chat = Chat.find(params[:id])
     end
 
+    def prepare_chats
+      @chats = api_user_id ? Chat.where(user_id: api_user_id).order(subscribed: :desc, id: :asc) : []
+    end
+
     def chat_params
-      params.fetch(:chat, {}).permit(:name, :telegram_chat_id, :subscribed)
+      params.fetch(:chat, {}).permit(:name, :telegram_chat_id, :subscribed, :chat_to_instant_send)
     end
   end
 end

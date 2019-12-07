@@ -2,3 +2,4 @@
   = f.input :name, label: t('chats.name')
   = f.input :telegram_chat_id, label: t('chats.telegram_chat_id')
   = f.input :subscribed, label: t('chats.subscribe')
+  = f.input :chat_to_instant_send, collection: chats.pluck(:name, :telegram_chat_id), label: "Chat to instant send (optional)"

@@ -2,7 +2,7 @@
   .col-lg-6.my-auto.mx-auto.bg-white.preview
     %h2 Edit Chat
     = simple_form_for @chat, url: chats_manage_path do |f|
-      = render 'form', f: f
+      = render 'form', f: f, chats: @chats
 
       .form-actions
         = f.button :submit, t('chats.update'), class: 'btn btn-primary'

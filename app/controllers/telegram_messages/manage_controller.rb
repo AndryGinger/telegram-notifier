@@ -54,7 +54,7 @@ module TelegramMessages
     end
 
     def prepare_chats
-      @chats = Chat.all.order(subscribed: :desc, id: :asc).pluck(:name, :telegram_chat_id)
+      @chats = Chat.where(user_id: api_user_id).order(subscribed: :desc, id: :asc).pluck(:name, :telegram_chat_id)
     end
 
     def telegram_params
