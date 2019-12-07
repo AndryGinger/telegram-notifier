@@ -22,7 +22,7 @@ module Telegram
 
     def send_message(message)
       @client.get_chats.wait
-      p response = @client.send_message(message.chat_id, message_content(message)).wait
+      response = @client.send_message(message.chat_id, message_content(message)).value
       message.update_attributes(sent_at: Time.current) if response.result.first
     end
 
@@ -55,11 +55,16 @@ module Telegram
         elsif content[:text]
           attrs[:body] = content[:text].text
         end
+
+        if chat.chat_to_instant_send
+          attrs[:chat_id] = chat.chat_to_instant_send
+          attrs[:send_at] = Time.current
+        end
       end
 
       telegram_message = TelegramMessage.new(telegram_attributes)
-      unless telegram_message.save!
-        p telegram_message.errors.full_messages
+      unless telegram_message.save
+        puts telegram_message.errors.full_messages
       end
     end
 
@@ -70,6 +75,7 @@ module Telegram
       file_to_save = Pathname.new(local_file.path).open
       Attachment.where(attachment_id: file.id).each do |tm|
         tm.attachment = file_to_save
+        tm.ready_to_send = true
         tm.save
       end
 

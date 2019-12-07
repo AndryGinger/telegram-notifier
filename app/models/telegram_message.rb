@@ -7,6 +7,7 @@ class TelegramMessage < ApplicationRecord
   delegate :attachment_url, to: :attachment
 
   before_create :set_user_id
+  after_commit :check_for_instant_send, if: -> { chat_id.present? && sent_at.nil? }, on: %i(create update)
 
   scope :ready_to_send, -> {
     joins("LEFT JOIN attachments ON telegram_messages.id = attachments.telegram_message_id")
@@ -17,5 +18,11 @@ class TelegramMessage < ApplicationRecord
 
   def set_user_id
     self.user_id = TelegramAuth.last.user_id
+  end
+
+  def check_for_instant_send
+    return if attachment.present? && attachment_url.blank?
+
+    TELEGRAM_CLI.send_message(self)
   end
 end
