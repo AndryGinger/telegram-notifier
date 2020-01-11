@@ -1,6 +1,6 @@
 module Chats
   class ManageController < ApplicationController
-    before_action :find_chat, only: %i(edit update)
+    before_action :find_chat, :check_authorization, only: %i(edit update)
     before_action :prepare_chats, only: %i(index edit)
 
     def index
@@ -33,6 +33,10 @@ module Chats
 
     def prepare_chats
       @chats = api_user_id ? Chat.where(user_id: api_user_id).order(subscribed: :desc, id: :asc) : []
+    end
+
+    def check_authorization
+      redirect_to root_path if @chat.user_id != api_user_id
     end
 
     def chat_params

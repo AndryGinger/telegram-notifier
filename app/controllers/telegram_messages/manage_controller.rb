@@ -1,6 +1,6 @@
 module TelegramMessages
   class ManageController < ApplicationController
-    before_action :find_telegram_message, only: %i(show edit update destroy)
+    before_action :find_telegram_message, :check_authorization, only: %i(show edit update destroy)
     before_action :init_telegram_message, only: %i(new create)
     before_action :prepare_chats, only: %i(new edit)
 
@@ -47,6 +47,10 @@ module TelegramMessages
 
     def find_telegram_message
       @telegram_message = TelegramMessage.find(params[:id])
+    end
+
+    def check_authorization
+      redirect_to root_path if @telegram_message.user_id != api_user_id
     end
 
     def init_telegram_message
